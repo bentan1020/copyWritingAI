@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
+import { Grid } from '@mui/material';
 
 import Input from './components/Input/Input'
 import Response from './components/Response/Response'
@@ -20,10 +21,14 @@ const App = () => {
   const emptyHandler = () => {setResponse("")}
 
   return (
-    <>
-      <Input onSubmit={handleSubmit}/>
-      <Response response={response} onEmpty={emptyHandler}/>
-    </>
+    <Grid container spacing={0}>
+      <Grid item xs={6}>
+        <Input onSubmit={handleSubmit}/>
+      </Grid>
+      <Grid item xs={6}>
+        <Response response={response} onEmpty={emptyHandler}/>
+      </Grid>
+    </Grid>
   )
 }
 

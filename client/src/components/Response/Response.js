@@ -1,14 +1,20 @@
 import React from 'react'
 
+import "./Response.css"
+
 const Response = (props) => {
     const emptyResponse = () => {
         props.onEmpty("")
     }
 
     return (
-        <div>
-            <div>{props.response}</div>
-            <button onClick={emptyResponse}>empty</button>
+        <div className='response'>
+            <div className='response-container'>
+                <div className='response-output'>{props.response}</div>
+            </div>
+            <div className='button-container'>
+                <button className='empty-button' onClick={emptyResponse}>empty</button>
+            </div>
         </div>
     )
 }

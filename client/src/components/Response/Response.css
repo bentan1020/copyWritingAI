@@ -1,0 +1,39 @@
+.response {
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.response-container {
+    padding: 1rem;
+}
+
+.response-output {
+    color: #333;
+    font-size: 1.2em;
+    transition: color 0.5s ease-in-out;
+}
+
+.button-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.empty-button:hover {
+    background-color: #0056b3;
+}
