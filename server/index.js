@@ -14,18 +14,23 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-app.post("/chat", async (req, res) => { 
-  const { prompt } = req.body;
-  
+app.post("/general", async (req, res) => {
+  const input = req.body;
+
+  let feedData = "Here are some general facts about my ideal client: \n";
+  Object.entries(input).forEach(([key, value]) => {
+    feedData += `${key}: ${value}, `;
+  });
+
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: prompt,
+    prompt: `repeat my data back to me: ${feedData}.`,
     max_tokens: 150,
     temperature: 0,
   });
 
   res.send(response.data.choices[0].text);
-})
+});
 
 const port = 8080;
 app.listen(port, () => {
