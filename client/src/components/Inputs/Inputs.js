@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Inputs = (props) => {
   const [data, setData] = useState(props.query);
+  const navigate = useNavigate();
 
   const changeHandler = (id, value) => {
     setData((prevData) => ({
@@ -19,6 +20,9 @@ const Inputs = (props) => {
       .then((res) => {
         if (props.id === "competitors" && props.onSubmit) {
           props.onSubmit(res.data);
+        }
+        if (props.next){
+            navigate(props.next);
         }
       })
       .catch((error) => {
@@ -39,7 +43,7 @@ const Inputs = (props) => {
                 />
             </div>
             ))}
-            {props.id === "competitors" ? (<button type="submit">Submit</button>) : (<button type="submit"><NavLink to={props.next}>Next</NavLink></button>)}
+            <button type="submit">{props.id === "competitors" ? "Submit" : "Next"}</button>
         </form>
     </>
   );

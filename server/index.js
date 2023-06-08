@@ -7,14 +7,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({origin: 'http://localhost:3000'}));
 
+// configuration for openai
 const { Configuration, OpenAIApi } = require("openai");
-
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
+// endpoints
 let feedData = ""
+let aggregateData = {}
 
 app.post("/general", (req, res) => {
   const input = req.body;
@@ -25,6 +27,13 @@ app.post("/general", (req, res) => {
   });
   feedData += "\n";
   console.log(feedData);
+
+  aggregateData =  {
+    ...aggregateData,
+    "general": input
+  }
+  console.log(aggregateData)
+  
   res.sendStatus(200);
 });
 
@@ -37,6 +46,13 @@ app.post("/pain", (req, res) => {
   });
   feedData += "\n"
   console.log(feedData);
+
+  aggregateData =  {
+    ...aggregateData,
+    "pain": input
+  }
+  console.log(aggregateData)
+
   res.sendStatus(200);
 });
 
@@ -48,6 +64,13 @@ app.post("/hopes", (req, res) => {
     feedData += `${key}: ${value}, `;
   });
   console.log(feedData);
+
+  aggregateData =  {
+    ...aggregateData,
+    "hopes": input
+  }
+  console.log(aggregateData)
+
   res.sendStatus(200);
 });
 
@@ -58,12 +81,17 @@ app.post("/competitors", async (req, res) => {
   Object.entries(input).forEach(([key, value]) => {
     feedData += `${key}: ${value}, `;
   });
-
   console.log(feedData)
+
+  aggregateData =  {
+    ...aggregateData,
+    "competitors": input
+  }
+  console.log(aggregateData)
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `repeat my data back to me: ${feedData}.`,
+    prompt: `what is my profession?: ${feedData}.`,
     max_tokens: 150,
     temperature: 0,
   });
