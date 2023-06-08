@@ -23,7 +23,7 @@ const Product = () => {
             <Inputs query={questions} id={"product"} onSubmit={(data) => {setResponse(data);}}/>
           </Grid>
           <Grid item xs={6}>
-            <Response response={response}/>
+            <Response response={response} onEmpty={() => {setResponse("")}}/>
           </Grid>
         </Grid>
     </>

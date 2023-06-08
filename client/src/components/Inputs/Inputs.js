@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./Inputs.css"
+
 const Inputs = (props) => {
   const [data, setData] = useState(props.query);
   const navigate = useNavigate();
