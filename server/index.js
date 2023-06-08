@@ -16,82 +16,54 @@ const openai = new OpenAIApi(configuration);
 
 // endpoints
 let feedData = ""
-let aggregateData = {}
 
-app.post("/general", (req, res) => {
-  const input = req.body;
-
-  feedData += "Here are some general facts about my ideal client: \n";
-  Object.entries(input).forEach(([key, value]) => {
-    feedData += `${key}: ${value}, `;
+const stringBuilder = (dict, str) => {
+  feedData += (str + " \n");
+  Object.entries(dict).forEach(([key, value]) => {
+    if (value !== "") {
+      feedData += `${key}: ${value}, `;
+    }
   });
   feedData += "\n";
   console.log(feedData);
+}
 
-  aggregateData =  {
-    ...aggregateData,
-    "general": input
-  }
-  console.log(aggregateData)
-  
+//general post request
+app.post("/general", (req, res) => {
+  const input = req.body;
+  stringBuilder(input, "Here are some general facts about my ideal client:");
   res.sendStatus(200);
 });
 
+//pain post request
 app.post("/pain", (req, res) => {
   const input = req.body;
-
-  feedData += "my client is dealing with these pain: \n";
-  Object.entries(input).forEach(([key, value]) => {
-    feedData += `${key}: ${value}, `;
-  });
-  feedData += "\n"
-  console.log(feedData);
-
-  aggregateData =  {
-    ...aggregateData,
-    "pain": input
-  }
-  console.log(aggregateData)
-
+  stringBuilder(input, "my client is dealing with these pain:")
   res.sendStatus(200);
 });
 
+//hopes post request
 app.post("/hopes", (req, res) => {
   const input = req.body;
-
-  feedData += "my client have these dreams and aspirations: \n";
-  Object.entries(input).forEach(([key, value]) => {
-    feedData += `${key}: ${value}, `;
-  });
-  console.log(feedData);
-
-  aggregateData =  {
-    ...aggregateData,
-    "hopes": input
-  }
-  console.log(aggregateData)
-
+  stringBuilder(input, "my client have these dreams and aspirations:")
   res.sendStatus(200);
 });
 
+//competitors post request
 app.post("/competitors", async (req, res) => {
   const input = req.body;
+  stringBuilder(input, "our competitors, and what our ideal clients like about our competitors:")
+  res.sendStatus(200);
+});
 
-  feedData += "our competitors, and what our ideal clients like about our competitors: \n";
-  Object.entries(input).forEach(([key, value]) => {
-    feedData += `${key}: ${value}, `;
-  });
-  console.log(feedData)
-
-  aggregateData =  {
-    ...aggregateData,
-    "competitors": input
-  }
-  console.log(aggregateData)
+//product post request
+app.post("/product", async (req, res) => {
+  const input = req.body;
+  stringBuilder(input, "here are some traits about our product:")
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `what is my profession?: ${feedData}.`,
+    prompt: `write me a sales letter with the information i have provided you: ${feedData}.`,
     max_tokens: 150,
     temperature: 0,
   });
@@ -100,6 +72,4 @@ app.post("/competitors", async (req, res) => {
 });
 
 const port = 8080;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-})
+app.listen(port, () => {console.log(`Server is listening on port ${port}`)})

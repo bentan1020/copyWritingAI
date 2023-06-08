@@ -6,10 +6,11 @@ import "./Header.css"
 const Header = () => {
   return (
     <ul className="header">
-        <li><NavLink to="/" activeClassName="active">General</NavLink></li>
-        <li><NavLink to="/pain" activeClassName="active">Pain</NavLink></li>
-        <li><NavLink to="/hopes" activeClassName="active">Hopes</NavLink></li>
-        <li><NavLink to="/competitors" activeClassName="active">Competitors</NavLink></li>
+        <li><NavLink to="/">General</NavLink></li>
+        <li><NavLink to="/pain">Pain</NavLink></li>
+        <li><NavLink to="/hopes">Hopes</NavLink></li>
+        <li><NavLink to="/competitors">Competitors</NavLink></li>
+        <li><NavLink to="/product">Product</NavLink></li>
     </ul>
   )
 }

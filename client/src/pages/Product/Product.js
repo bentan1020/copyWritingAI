@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Inputs from "../../components/Inputs/Inputs";
 import { Grid } from "@mui/material";
 
 import Response from "../../components/Response/Response";
 import Header from "../../components/Header/Header";
 
-const Competitors = () => {
+const Product = () => {
   const questions = {
-    competitors: "",
+    features: "",
+    benefits: "",
+    market: "",
     like: "",
-    dislike: "",
   }
+
+  const [response, setResponse] = useState("");
 
   return (
     <>
       <Header></Header>
         <Grid container spacing={0}>
           <Grid item xs={6}>
-            <Inputs query={questions} id={"competitors"} next={"/product"}/>
+            <Inputs query={questions} id={"product"} onSubmit={(data) => {setResponse(data);}}/>
           </Grid>
           <Grid item xs={6}>
-            <Response/>
+            <Response response={response}/>
           </Grid>
         </Grid>
     </>
   )
 };
 
-export default Competitors;
+export default Product;

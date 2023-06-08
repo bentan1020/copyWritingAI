@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Inputs = (props) => {
   const [data, setData] = useState(props.query);
   const navigate = useNavigate();
+  const last = "product"
 
   const changeHandler = (id, value) => {
     setData((prevData) => ({
@@ -18,7 +19,7 @@ const Inputs = (props) => {
     axios
       .post(`http://localhost:8080/${props.id}`, data)
       .then((res) => {
-        if (props.id === "competitors" && props.onSubmit) {
+        if (props.id === last && props.onSubmit) {
           props.onSubmit(res.data);
         }
         if (props.next){
@@ -43,7 +44,7 @@ const Inputs = (props) => {
                 />
             </div>
             ))}
-            <button type="submit">{props.id === "competitors" ? "Submit" : "Next"}</button>
+            <button type="submit">{props.id === last ? "Submit" : "Next"}</button>
         </form>
     </>
   );

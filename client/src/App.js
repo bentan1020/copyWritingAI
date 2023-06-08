@@ -9,6 +9,7 @@ import General from './pages/General/General';
 import Pain from './pages/Pain/Pain';
 import Hopes from './pages/Hopes/Hopes';
 import Competitors from './pages/Competitors/Competitors';
+import Product from './pages/Product/Product';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/pain" element={<Pain />} />
         <Route path="/hopes" element={<Hopes />} />
         <Route path="/competitors" element={<Competitors />} />
+        <Route path="/product" element={<Product />} />
       </Routes>
     </Router>
   )
