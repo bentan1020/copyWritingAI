@@ -14,28 +14,42 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+let feedData = ""
+
 app.post("/general", async (req, res) => {
   const input = req.body;
 
-  let feedData = "Here are some general facts about my ideal client: \n";
+  feedData += "Here are some general facts about my ideal client: \n";
   Object.entries(input).forEach(([key, value]) => {
     feedData += `${key}: ${value}, `;
   });
-
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: `repeat my data back to me: ${feedData}.`,
-    max_tokens: 150,
-    temperature: 0,
-  });
-
-  res.send(response.data.choices[0].text);
+  feedData += "\n"
 });
 
 app.post("/pain", async (req, res) => {
   const input = req.body;
 
-  let feedData = "my client is dealing with these pain: \n";
+  feedData += "my client is dealing with these pain: \n";
+  Object.entries(input).forEach(([key, value]) => {
+    feedData += `${key}: ${value}, `;
+  });
+  feedData += "\n"
+});
+
+app.post("/hopes", async (req, res) => {
+  const input = req.body;
+
+  feedData += "my client have these dreams and aspirations: \n";
+  Object.entries(input).forEach(([key, value]) => {
+    feedData += `${key}: ${value}, `;
+  });
+  feedData += "\n"
+});
+
+app.post("/competitors", async (req, res) => {
+  const input = req.body;
+
+  feedData += "our competitors, and what our ideal clients like about our competitors: \n";
   Object.entries(input).forEach(([key, value]) => {
     feedData += `${key}: ${value}, `;
   });
@@ -46,7 +60,7 @@ app.post("/pain", async (req, res) => {
     max_tokens: 150,
     temperature: 0,
   });
-
+  console.log(response.data.choices[0].text)
   res.send(response.data.choices[0].text);
 });
 

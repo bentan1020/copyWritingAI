@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Grid } from "@mui/material";
+import { NavLink } from 'react-router-dom'
 
 import Headers from "../../components/Header/Header";
 import Response from "../../components/Response/Response";
@@ -50,7 +51,8 @@ const Pain = () => {
                 />
               </div>
             ))}
-            <button type="submit">Next</button>
+            <button><NavLink to="/">Back</NavLink></button>
+            <button type="submit"><NavLink to="/hopes">Next</NavLink></button>
           </form>
         </Grid>
         <Grid item xs={6}>
