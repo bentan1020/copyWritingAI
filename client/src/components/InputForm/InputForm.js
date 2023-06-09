@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from "axios";
 
-function TabInputs({ data, handleInputChange, id, submitRequestHandler}) {
+import "./InputForm.css"
+
+function TabInputs({ data, handleInputChange, id, prev, next, submitRequestHandler}) {
   const last = "product"
-  const doNothingHandler = (e) => {
-    e.preventDefault();
-  }
+  const first = "general"
+
   return (
     <div>
       {Object.keys(data).map((key) => (
@@ -18,10 +19,10 @@ function TabInputs({ data, handleInputChange, id, submitRequestHandler}) {
           />
         </div>
       ))}
-      <button 
-        onClick={id === last ? submitRequestHandler : doNothingHandler}
-        type="button"
-      >
+      
+      { id === first ? (<div></div>) : (<button onClick={prev} type='button'>Previous</button>) }
+
+      <button onClick={id === last ? submitRequestHandler : next} type="button">
         {id === last ? "Submit" : "Next"}
       </button>
     </div>
@@ -64,6 +65,20 @@ const InputForm = (props) => {
     } 
   });
 
+  const nextTab = {
+    "general": "pain",
+    "pain": "hopes",
+    "hopes": "competitors",
+    "competitors": "product"
+  }
+
+  const prevTab = {
+    "pain": "general",
+    "hopes": "pain",
+    "competitors": "hopes",
+    "product": "competitors"
+  }
+
   const handleInputChange = (event, field) => {
     setFormData(prevState => ({
       ...prevState,
@@ -86,16 +101,24 @@ const InputForm = (props) => {
       });
   }
 
+  const prevHandler = () => {
+    setActiveTab(prevTab[activeTab])
+  }
+
+  const nextHandler = () => {
+    setActiveTab(nextTab[activeTab])
+  }
+
   return (
     <div>
-      <button onClick={() => {setActiveTab('general')}}>General Information About Your Target Audience</button>
-      <button onClick={() => {setActiveTab('pain')}}>Their Pain Points</button>
-      <button onClick={() => setActiveTab('hopes')}>Their Hopes and Dreams</button>
-      <button onClick={() => setActiveTab('competitors')}>What Are They Currently Using</button>
-      <button onClick={() => setActiveTab('product')}>What's Special About Our Product</button>
+      <button className="tab-button" onClick={() => setActiveTab('general')}>General Information About Your Target Audience</button>
+      <button className="tab-button" onClick={() => setActiveTab('pain')}>Their Pain Points</button>
+      <button className="tab-button" onClick={() => setActiveTab('hopes')}>Their Hopes and Dreams</button>
+      <button className="tab-button" onClick={() => setActiveTab('competitors')}>What Are They Currently Using</button>
+      <button className="tab-button" onClick={() => setActiveTab('product')}>What's Special About Our Product</button>
 
       {activeTab && (
-        <TabInputs data={formData[activeTab]} handleInputChange={handleInputChange} id={activeTab} submitRequestHandler={submitRequestHandler}/>
+        <TabInputs data={formData[activeTab]} handleInputChange={handleInputChange} id={activeTab} prev={prevHandler} next={nextHandler} submitRequestHandler={submitRequestHandler}/>
       )}
     </div>
   );

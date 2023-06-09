@@ -1,0 +1,16 @@
+.tab-button {
+    background-color: #4CAF50; /* Green background */
+    border: none; /* No border */
+    color: white; /* White text */
+    padding: 15px 32px; /* Padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Inline-block */
+    font-size: 16px; /* Text size */
+    margin: 4px 2px; /* Margin */
+    cursor: pointer; /* Cursor style */
+}
+
+.tab-button:hover {
+    background-color: #45a049; /* Darker green when hovered */
+}  
