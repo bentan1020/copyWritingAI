@@ -14,31 +14,30 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// endpoints
-let feedData = ""
-
 const stringBuilder = (dict, str) => {
+  let feedData = ""
   feedData += (str + " \n");
   Object.entries(dict).forEach(([key, value]) => {
+    feedData += `Here are some ${key} information about our target audience: \n`
     Object.entries(dict[key]).forEach(([secKey, secValue]) => {
-      if (value !== "") {
-        feedData += `${secKey}: ${secValue}, `;
+      if (secValue != "") {
+        feedData += `${secKey} ${key} information are ${secValue}, `;
       }
     });
+    feedData += "\n";
   });
-  feedData += "\n";
   console.log(feedData);
 }
 
-// post request
+// endpoints
 app.post("/product", async (req, res) => {
   const input = req.body;
   stringBuilder(input, "here are some traits about our target audience, as well as our product")
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: `repeat my data back to me ${feedData}.`,
-    max_tokens: 150,
+    prompt: `write me a sales letter that sells my product based on the information of my ideal clients: ${feedData}.`,
+    max_tokens: 1500,
     temperature: 0,
   });
   console.log(response.data.choices[0].text)
