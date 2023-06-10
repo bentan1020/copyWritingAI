@@ -1,56 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import TabInputs from "../TabInputs/TabInputs";
+
 import "./InputForm.css";
-
-function TabInputs({
-  data,
-  handleInputChange,
-  id,
-  prev,
-  next,
-  emptyTabHandler,
-  submitRequestHandler,
-}) {
-  const last = "product";
-  const first = "general";
-
-  return (
-    <div>
-      <div className="input-field-container">
-        {Object.keys(data).map((key) => (
-          <div key={key} className="input-field">
-            <p>{key}</p>
-            <input
-              type="text"
-              value={data[key]}
-              onChange={(event) => handleInputChange(event, key)}
-            />
-          </div>
-        ))}
-      </div>
-
-      <div className="input-button-container">
-        {id === first ? (
-          <div></div>
-        ) : (
-          <button onClick={prev} type="button">
-            Previous
-          </button>
-        )}
-
-        <button onClick={emptyTabHandler}>Clear</button>
-
-        <button
-          onClick={id === last ? submitRequestHandler : next}
-          type="button"
-        >
-          {id === last ? "Submit" : "Next"}
-        </button>
-      </div>
-    </div>
-  );
-}
 
 const InputForm = (props) => {
   const [activeTab, setActiveTab] = useState("general");
@@ -135,14 +88,6 @@ const InputForm = (props) => {
     });
   };
 
-  const prevHandler = () => {
-    setActiveTab(prevTab[activeTab]);
-  };
-
-  const nextHandler = () => {
-    setActiveTab(nextTab[activeTab]);
-  };
-
   return (
     <div>
       <div className="tab-button-container">
@@ -185,8 +130,8 @@ const InputForm = (props) => {
           data={formData[activeTab]}
           handleInputChange={handleInputChange}
           id={activeTab}
-          prev={prevHandler}
-          next={nextHandler}
+          prev={() => {setActiveTab(prevTab[activeTab])}}
+          next={() => {setActiveTab(nextTab[activeTab])}}
           emptyTabHandler={emptyTabHandler}
           submitRequestHandler={submitRequestHandler}
         />
