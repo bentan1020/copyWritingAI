@@ -13,7 +13,7 @@ const Response = (props) => {
                 <div className='response-output'>{props.response}</div>
             </div>
             <div className='button-container'>
-                <button className='empty-button' onClick={emptyResponse}>empty</button>
+                <button onClick={emptyResponse}>Empty</button>
             </div>
         </div>
     )

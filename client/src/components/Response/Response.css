@@ -1,3 +1,12 @@
+/* Google Font CDN Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 .response {
     border-radius: 5px;
     background-color: #f0f0f0;
@@ -24,7 +33,7 @@
     align-items: center;
 }
 
-.empty-button {
+.button-container button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;

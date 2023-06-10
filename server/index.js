@@ -14,8 +14,8 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
+let feedData = ""
 const stringBuilder = (dict, str) => {
-  let feedData = ""
   feedData += (str + " \n");
   Object.entries(dict).forEach(([key, value]) => {
     feedData += `Here are some ${key} information about our target audience: \n`
