@@ -8,41 +8,69 @@
 }
 
 .response {
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.response {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .response-container {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .response-output {
-    color: #333;
-    font-size: 1.2em;
-    transition: color 0.5s ease-in-out;
+  color: #333;
+  font-size: 1.2em;
+  transition: color 0.5s ease-in-out;
 }
 
 .button-container {
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-container button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .empty-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }

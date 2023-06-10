@@ -66,6 +66,7 @@ const InputForm = (props) => {
   };
 
   const submitRequestHandler = (e) => {
+    props.isLoadingHandler(true);
     e.preventDefault();
     axios
       .post(`http://localhost:8080/product`, formData)
