@@ -34,6 +34,7 @@ const InputForm = (props) => {
       dislike: "",
     },
     product: {
+      name: "",
       features: "",
       benefits: "",
       market: "",
