@@ -9,6 +9,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({origin: 'http://localhost:3000'}));
 
-app.use(openaiRoutes);
+app.use("/product", openaiRoutes);
 
 app.listen(8080, () => { console.log(`Server is listening on port 8080`) });
