@@ -1,10 +1,28 @@
-const express = require('express');
+const express = require("express");
+const mongoose = require("mongoose");
+require("dotenv").config();
+
 const app = express();
 
-require('dotenv').config();
-
-const openaiRoutes = require('./routes/openai-routes');
+const openaiRoutes = require("./routes/openai-routes");
+const HttpError = require("./models/http-error");
 
 app.use("/product", openaiRoutes);
 
-app.listen(8080, () => { console.log(`Server is listening on port 8080`) });
+app.use((req, res, next) => {
+  const error = new HttpError("Could not find this route.", 404);
+  return next(error);
+});
+
+mongoose
+  .connect(
+    "mongodb+srv://ben:bwSmFAccVpUPLNnz@cluster0.loxrjek.mongodb.net/copywriting?retryWrites=true&w=majority"
+  )
+  .then(
+    app.listen(4999, () => {
+      console.log("listening on port 4999");
+    })
+  )
+  .catch((err) => {
+    console.log(err);
+  });

@@ -1,8 +1,6 @@
-const express = require("express");
 const { Configuration, OpenAIApi } = require("openai");
 
 const HttpError = require("../models/http-error");
-
 
 // configuration for openai
 const configuration = new Configuration({
@@ -10,8 +8,9 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-let feedData = "";
 
+// string builder
+let feedData = "";
 const stringBuilder = (dict, str) => {
   feedData += str + " \n";
   Object.entries(dict).forEach(([key, value]) => {
@@ -46,7 +45,8 @@ exports.getChatGPT = async (req, res, next) => {
         },
         {
           role: "user",
-          content: `WARNING: You will be shocked to learn the REAL truth about most probiotic brands below...
+          content: 
+          `WARNING: You will be shocked to learn the REAL truth about most probiotic brands below...
         Hey it's Dr. Matthew Roberson, M.D., Joel's colleague and lead medical advisor here at BioTRUST, and if you suffer from bloating, digestive discomfort, low energy, moodiness, brain fog, poor sleep, weight issues, or even dry, flaky, unhealthy looking skin, then please read below as I have some important information to share with you...
         To start, you’re probably already aware that taking a daily probiotic supplement is both extremely important and highly recommended, but you may not fully understand all the reasons why.
         Even more, there’s a big difference between truly helpful & effective probiotic supplements, and most of the stuff available online and in stores today. More on that in a moment...
