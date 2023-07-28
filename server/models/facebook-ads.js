@@ -7,4 +7,4 @@ const facebookAdSchema = new Schema({
     ad: { type: String, require: true },
 });
 
-module.exports = mongoose.model("Facebook-ad", facebookAdSchema);
+module.exports = mongoose.model("Product-facebook-ad", facebookAdSchema);

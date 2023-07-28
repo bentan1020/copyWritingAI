@@ -10,9 +10,7 @@ const Response = (props) => {
   return (
     <div className="response">
       {props.isLoading === false ? (
-        <div className="response-container">
-          <div className="response-output">{props.response}</div>
-        </div>
+          <div className="response-output" style={{ whiteSpace: 'pre-line' }}>{props.response}</div>
       ) : (
         <div className="loading-spinner"></div>
       )}
