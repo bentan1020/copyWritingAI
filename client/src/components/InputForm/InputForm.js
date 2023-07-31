@@ -73,6 +73,7 @@ const InputForm = (props) => {
       .post(`http://localhost:8080/product`, formData)
       .then((res) => {
         props.onSubmit(res.data);
+        props.isLoadingHandler(false)
       })
       .catch((error) => {
         console.log(error);
