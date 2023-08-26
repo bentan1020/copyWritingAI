@@ -5,24 +5,22 @@ import Response from "../components/Response/Response";
 import InputForm from "../components/InputForm/InputForm";
 import SideDrawer from "../shared/components/Navigation/SideDrawer";
 
-import "./CopyLab.css";
-
 const CopyLab = () => {
   const [response, setResponse] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   return (
     <Grid container spacing={0}>
-      <Grid item xs={2}>
+      <Grid item xs={1.5}>
         <SideDrawer />
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={5.25}>
         <InputForm
           onSubmit={(data) => {setResponse(data);}}
           isLoadingHandler = {setIsLoading}
         />
       </Grid>
-      <Grid item xs={5}>
+      <Grid item xs={5.25}>
         <Response response={response} onEmpty={() => setResponse("")} isLoading={isLoading} />
       </Grid>
     </Grid>
