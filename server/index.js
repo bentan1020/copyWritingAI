@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
-require("dotenv").config();
 
 const openaiRoutes = require("./routes/openai-routes");
 const HttpError = require("./models/http-error");
@@ -21,7 +20,7 @@ app.use((req, res, next) => {
 
 mongoose
   .connect(
-    `mongodb+srv://ben:${process.env.MONGODB_PW}@cluster0.loxrjek.mongodb.net/copywriting?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.loxrjek.mongodb.net/copywriting?retryWrites=true&w=majority`
   )
   .then(
     app.listen(8080, () => {
