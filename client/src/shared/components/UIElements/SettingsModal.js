@@ -1,7 +1,7 @@
 import React from "react";
-import "./Modal.css";
+import "./SettingsModal.css";
 
-const Modal = ({ isOpen, toggleModal }) => {
+const SettingsModal = ({ isOpen, toggleModal }) => {
   if (isOpen) {
     document.body.classList.add("active-modal");
   } else {
@@ -28,4 +28,4 @@ const Modal = ({ isOpen, toggleModal }) => {
   );
 }
 
-export default Modal;
+export default SettingsModal;
