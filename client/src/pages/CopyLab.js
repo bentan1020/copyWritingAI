@@ -11,16 +11,16 @@ const CopyLab = () => {
 
   return (
     <Grid container spacing={0}>
-      <Grid item xs={1.5}>
+      <Grid item xs={2}>
         <SideDrawer />
       </Grid>
-      <Grid item xs={5.25}>
+      <Grid item xs={5}>
         <InputForm
           onSubmit={(data) => {setResponse(data);}}
           isLoadingHandler = {setIsLoading}
         />
       </Grid>
-      <Grid item xs={5.25}>
+      <Grid item xs={5}>
         <Response response={response} onEmpty={() => setResponse("")} isLoading={isLoading} />
       </Grid>
     </Grid>

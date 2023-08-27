@@ -1,12 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+import HomeIcon from "@mui/icons-material/Home";
+
 const NavLinks = () => {
   return (
     <ul className="list-none w-full h-full flex flex-col">
-      <li className="mt-2/100 mb-2/100 hover:bg-blue-200 hover:cursor-pointer">
+      <li className="hover:cursor-pointer hover:bg-blue-500 hover:rounded-md p-3 ml-4 mr-4 flex">
+        <HomeIcon style={{ color: "white", marginRight: "3%" }} />
         <NavLink to="/">
-          Copy Lab
+          <div className="text-white font-semibold">home</div>
         </NavLink>
       </li>
     </ul>

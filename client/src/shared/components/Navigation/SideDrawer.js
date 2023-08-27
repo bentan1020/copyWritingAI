@@ -8,7 +8,7 @@ import Profile from "./Profile";
 const SideDrawer = () => {
   return (
     <React.Fragment>
-      <div className="h-screen flex flex-1 flex-col">
+      <div className="h-screen flex flex-1 flex-col bg-blue-600">
         <Logo />
         <NavLinks />
         <Profile />
