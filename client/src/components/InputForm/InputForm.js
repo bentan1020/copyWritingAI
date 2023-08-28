@@ -69,16 +69,6 @@ const InputForm = (props) => {
   const submitRequestHandler = (e) => {
     e.preventDefault();
     props.onSubmit(formData);
-    // props.isLoadingHandler(true);
-    // axios
-    //   .post(`http://localhost:8080/product`, formData)
-    //   .then((res) => {
-    //     props.onSubmit(res.data);
-    //     props.isLoadingHandler(false)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   const emptyTabHandler = () => {

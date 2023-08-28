@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import SendIcon from "@mui/icons-material/Send";
 
 const Chat = (props) => {
@@ -6,7 +7,6 @@ const Chat = (props) => {
 
   // expands textbox as text gets larger
   const textBoxRef = useRef();
-
   useEffect(() => {
     adjustTextBox();
   }, [inputValue]);
@@ -39,7 +39,6 @@ const Chat = (props) => {
         feedData += "\n";
       });
     };
-
     stringBuilder(
       props.response,
       "here are some traits about our target audience, as well as our product: \n"
@@ -50,6 +49,14 @@ const Chat = (props) => {
   // Call API when user prompts
   const submitHandler = (e) => {
     e.preventDefault();
+
+    // axios
+    //   .post(`http://localhost:8080/product`, inputValue)
+    //   .then((res) => {
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (

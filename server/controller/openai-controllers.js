@@ -34,29 +34,9 @@ exports.saveFacebookAd = async (req, res, next) => {
   res.status(201).json({ ad: responseObject });
 };
 
-// string builder
-let feedData = "";
-const stringBuilder = (dict, str) => {
-  feedData += str + " \n";
-  Object.entries(dict).forEach(([key, value]) => {
-    feedData += `Here are some ${key} information about our target audience: \n`;
-    Object.entries(dict[key]).forEach(([secKey, secValue]) => {
-      if (secValue != "") {
-        feedData += `${secKey} ${key} information are ${secValue}, \n`;
-      }
-    });
-    feedData += "\n";
-  });
-  console.log(feedData);
-};
-
-// return a chatgpt response
+// return a response from openai
 exports.getChatGPT = async (req, res, next) => {
   const input = req.body;
-  stringBuilder(
-    input,
-    "here are some traits about our target audience, as well as our product: \n"
-  );
 
   let samples;
   try {
@@ -81,7 +61,7 @@ exports.getChatGPT = async (req, res, next) => {
         },
         {
           role: "user",
-          content: `Great. Remember, you're acting as a world-class direct response copywriter who specializes in Facebook ads. Now write me a 300 word Facebook ad that follow a similar structure based on the information I have provided you. Make them sensational and emotionally engaging. \n${feedData}.`,
+          content: `Great. Remember, you're acting as a world-class direct response copywriter who specializes in Facebook ads. Now write me a 300 word Facebook ad that follow a similar structure based on the information I have provided you. Make them sensational and emotionally engaging. \n${input}.`,
         },
       ],
       // max_tokens: 1500,

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
 
-import Response from "../components/Response/Response";
 import InputForm from "../components/InputForm/InputForm";
-import SideDrawer from "../shared/components/Navigation/SideDrawer";
+import SideDrawer from "../shared/components/Navigation/SideDrawer/SideDrawer";
 import Chat from "../components/Chat/Chat";
 
 const CopyLab = () => {

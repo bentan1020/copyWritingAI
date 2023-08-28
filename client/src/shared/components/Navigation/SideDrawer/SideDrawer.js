@@ -1,9 +1,8 @@
 import React from "react";
 
-
-import NavLinks from "./NavLinks";
-import Logo from "./Logo.js";
-import Profile from "./Profile";
+import NavLinks from "../NavLinks/NavLinks";
+import Logo from "../Logo/Logo";
+import Profile from "../Profile/Profile";
 
 const SideDrawer = () => {
   return (
