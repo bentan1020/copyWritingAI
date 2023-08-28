@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import Response from "../components/Response/Response";
 import InputForm from "../components/InputForm/InputForm";
 import SideDrawer from "../shared/components/Navigation/SideDrawer";
+import Chat from "../components/Chat/Chat";
 
 const CopyLab = () => {
   const [response, setResponse] = useState("");
@@ -21,7 +22,8 @@ const CopyLab = () => {
         />
       </Grid>
       <Grid item xs={5}>
-        <Response response={response} onEmpty={() => setResponse("")} isLoading={isLoading} />
+        {/* <Response response={response} onEmpty={() => setResponse("")} isLoading={isLoading} /> */}
+        <Chat response={response} />
       </Grid>
     </Grid>
   );
