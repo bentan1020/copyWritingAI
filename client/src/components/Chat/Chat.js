@@ -2,10 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import SendIcon from "@mui/icons-material/Send";
 
-const Chat = (props) => {
+const Chat = ({ response }) => {
   const [inputValue, setInputValue] = useState("");
+  const [openAIResponse, setOpenAIResponse] = useState("");
 
-  // expands textbox as text gets larger
+  // input box expands
   const textBoxRef = useRef();
   useEffect(() => {
     adjustTextBox();
@@ -25,7 +26,8 @@ const Chat = (props) => {
 
   // Everytime someone submits a form, we update the input field
   useEffect(() => {
-    if (!props.response) return; // if no form, input field should be empty
+    if (!response) return;
+
     let feedData = "";
     const stringBuilder = (dict, str) => {
       feedData += str + " \n";
@@ -39,24 +41,27 @@ const Chat = (props) => {
         feedData += "\n";
       });
     };
+
     stringBuilder(
-      props.response,
+      response,
       "here are some traits about our target audience, as well as our product: \n"
     );
-    setInputValue(feedData);
-  }, [props.response]);
+
+    setInputValue((prevInputValue) => prevInputValue + "\n" + feedData);
+  }, [response]);
 
   // Call API when user prompts
   const submitHandler = (e) => {
     e.preventDefault();
-
-    // axios
-    //   .post(`http://localhost:8080/product`, inputValue)
-    //   .then((res) => {
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    setInputValue("");
+    axios
+      .post(`http://localhost:8080/product/`, inputValue)
+      .then((res) => {
+        setOpenAIResponse(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -64,12 +69,17 @@ const Chat = (props) => {
       {/* Message List */}
       <div className="flex-1 overflow-y-auto mb-4 bg-white p-4 rounded shadow">
         {/* Sample message */}
-        <div className="mb-4">
-          <div className="text-sm text-gray-600">Username</div>
-          <div className="bg-blue-200 rounded p-2 mt-1">
-            Hello, this is a sample message!
+        {openAIResponse && (
+          <div className="mb-4">
+            <div className="text-sm text-gray-600">Username</div>
+            <div
+              className="bg-blue-200 rounded p-2 mt-1"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {openAIResponse}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Input Area */}
@@ -77,7 +87,7 @@ const Chat = (props) => {
         <div className="flex p-2 bg-white rounded shadow">
           <textarea
             ref={textBoxRef}
-            className="flex-1 h-auto mr-2 text-xs font-medium bg-gray-200 rounded-md px-2 overflow-hidden"
+            className="flex-1 h-auto mr-2 text-xs font-medium bg-gray-200 rounded-md px-2 overflow-hidden overflow-y-auto"
             placeholder="Send a Message..."
             value={inputValue}
             onChange={textOnChangeHandler}

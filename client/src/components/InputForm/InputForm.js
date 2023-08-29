@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 import TabInputs from "../TabInputs/TabInputs";
 
 import "./InputForm.css";
 
-const InputForm = (props) => {
+const InputForm = ({onSubmit}) => {
   const [activeTab, setActiveTab] = useState("general");
   const [formData, setFormData] = useState({
     general: {
@@ -68,7 +67,8 @@ const InputForm = (props) => {
 
   const submitRequestHandler = (e) => {
     e.preventDefault();
-    props.onSubmit(formData);
+    console.log("Submitting form data:", formData);
+    onSubmit(formData);
   };
 
   const emptyTabHandler = () => {

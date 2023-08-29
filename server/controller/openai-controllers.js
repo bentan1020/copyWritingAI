@@ -36,7 +36,12 @@ exports.saveFacebookAd = async (req, res, next) => {
 
 // return a response from openai
 exports.getChatGPT = async (req, res, next) => {
-  const input = req.body;
+  const inputObject = req.body;
+
+  // Extract the string from the object
+  const inputString = Object.keys(inputObject)[0];
+
+  console.log(inputString);
 
   let samples;
   try {
