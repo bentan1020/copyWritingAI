@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
-import SettingsModal from "../../UIElements/SettingModal/SettingsModal";
+import SettingsModal from "./../SettingModal/SettingsModal";
 
 const Profile = () => {
   const [isModalOpen, setModalOpen] = useState(false);

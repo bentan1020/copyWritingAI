@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import favicon from "./../../../../assets/StreamlineSelling Favicon.png";
+import favicon from "../../../assets/StreamlineSelling Favicon.png"
 
 const Logo = () => {
   return (
