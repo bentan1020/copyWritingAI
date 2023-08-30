@@ -55,7 +55,7 @@ const Chat = ({ response }) => {
     e.preventDefault();
     setInputValue("");
     axios
-      .post(`http://localhost:8080/product/`, inputValue)
+      .post(`http://localhost:8080/api/openaiResponse`, inputValue)
       .then((res) => {
         setOpenAIResponse(res.data);
       })

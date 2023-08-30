@@ -3,6 +3,7 @@
     "start": "nodemon index.js"
   },
   "dependencies": {
+    "@clerk/clerk-sdk-node": "^4.12.3",
     "cors": "^2.8.5",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
