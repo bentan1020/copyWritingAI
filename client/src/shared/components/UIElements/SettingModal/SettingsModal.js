@@ -1,5 +1,23 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
+
 import "./SettingsModal.css";
+
+const SignOutButton = () => {
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
+
+  return (
+    <button className="bg-red-500 rounded-md p-2"
+      onClick={async () => {
+        await signOut();
+        navigate("/");
+      }}
+    >
+      Sign out
+    </button>
+  );
+};
 
 const SettingsModal = ({ isOpen, toggleModal }) => {
   if (isOpen) {
@@ -15,9 +33,7 @@ const SettingsModal = ({ isOpen, toggleModal }) => {
           <div className="overlay"></div>
           <div className="modal-content">
             <h2>Settings</h2>
-            <p>Setting 1</p>
-            <p>Setting 2</p>
-            <p>Setting 3</p>
+            <SignOutButton />
             <button className="close-modal" onClick={toggleModal}>
               CLOSE
             </button>
@@ -26,6 +42,6 @@ const SettingsModal = ({ isOpen, toggleModal }) => {
       )}
     </>
   );
-}
+};
 
 export default SettingsModal;

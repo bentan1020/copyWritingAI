@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
-import SettingsModal from "../../UIElements/SettingsModal";
+import SettingsModal from "../../UIElements/SettingModal/SettingsModal";
 
 const Profile = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -10,8 +10,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex hover:cursor-pointer hover:bg-blue-500 m-2 hover:rounded-md p-2">
-      <div onClick={toggleModal} className="flex items-center w-full">
+    <div className="flex hover:bg-blue-500 m-2 hover:rounded-md p-2">
+      <div onClick={toggleModal} className="hover:cursor-pointer flex items-center w-full">
         <div className="mr-3">
           <img
             src="https://youthscape.ams3.cdn.digitaloceanspaces.com/images/16723620780107.remini-enhanced.jpg"
