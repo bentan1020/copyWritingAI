@@ -36,12 +36,8 @@ exports.saveFacebookAd = async (req, res, next) => {
 
 // return a response from openai
 exports.getChatGPT = async (req, res, next) => {
-  const inputObject = req.body;
-
   // Extract the string from the object
-  const inputString = Object.keys(inputObject)[0];
-
-  console.log(inputString);
+  const inputString = Object.keys(req.body)[0];
 
   let samples;
   try {
@@ -66,12 +62,13 @@ exports.getChatGPT = async (req, res, next) => {
         },
         {
           role: "user",
-          content: `Great. Remember, you're acting as a world-class direct response copywriter who specializes in Facebook ads. Now write me a 300 word Facebook ad that follow a similar structure based on the information I have provided you. Make them sensational and emotionally engaging. \n${input}.`,
+          content: `Great. Remember, you're acting as a world-class direct response copywriter who specializes in Facebook ads. Now write me a 300 word Facebook ad that follow a similar structure based on the information I have provided you. Make them sensational and emotionally engaging. \n${inputString}.`,
         },
       ],
       // max_tokens: 1500,
     });
   } catch (err) {
+    console.error("OpenAI API Error:", err);
     const error = new HttpError(
       "Could not connect to chatGPT API, try later",
       404
