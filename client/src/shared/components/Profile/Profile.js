@@ -10,20 +10,41 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex hover:bg-blue-500 m-2 hover:rounded-md p-2">
-      <div onClick={toggleModal} className="hover:cursor-pointer flex items-center w-full">
-        <div className="mr-3">
+    <div
+      className="flex hover:bg-blue-500 hover:rounded-md"
+      style={{
+        padding: "calc(0.5vw + 0.5vh)",
+        margin: "calc(0.5vw + 0.5vh)",
+      }}
+    >
+      <div
+        onClick={toggleModal}
+        className="hover:cursor-pointer flex items-center w-full"
+      >
+        <div
+          className="mr-3"
+          style={{
+            marginRight: "calc(0.5vw + 0.5vh)",
+          }}
+        >
           <img
             src="https://youthscape.ams3.cdn.digitaloceanspaces.com/images/16723620780107.remini-enhanced.jpg"
             alt="Profile Picture"
-            className="w-12 h-12 rounded-md object-cover"
+            className="rounded-md object-cover"
+            style={{
+              width: "calc(2vw + 2vh)",
+              height: "calc(2vw + 2vh)",
+            }}
           ></img>
         </div>
-        <div className="flex-1 flex items-center text-sm text-white font-semibold">
+        <div
+          className="flex-1 flex items-center text-white font-semibold"
+          style={{ fontSize: "calc(0.80vw)" }}
+        >
           Andrew Tate
         </div>
         <div className="flex items-center">
-          <ImportExportIcon style={{ color: "white" }} />
+          <ImportExportIcon style={{ color: "white", fontSize: "calc(1vw)" }} />
         </div>
       </div>
 
