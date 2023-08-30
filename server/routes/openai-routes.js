@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const chatGPT= require("../controller/openai-controllers")
+const { getChatGPT, saveFacebookAd }  = require("../controller/openai-controllers")
 
-router.post("/openaiResponse", chatGPT.getChatGPT)
-router.post("/new-facebook-ad", chatGPT.saveFacebookAd)
+router.post("/openaiResponse", getChatGPT)
+router.post("/new-facebook-ad", saveFacebookAd)
 
 module.exports = router;
