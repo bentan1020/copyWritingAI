@@ -35,6 +35,7 @@ function ClerkProviderWithRoutes() {
     <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
       <Routes>
         <Route path="/" element={<PublicPage />} />
+        
         <Route
           path="/protected"
           element={

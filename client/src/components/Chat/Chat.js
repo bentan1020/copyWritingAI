@@ -2,9 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import SendIcon from "@mui/icons-material/Send";
 
+import { useAuth } from "@clerk/clerk-react";
+
 const Chat = ({ response }) => {
   const [inputValue, setInputValue] = useState("");
   const [openAIResponse, setOpenAIResponse] = useState("");
+  const { getToken } = useAuth();
 
   // input box expands
   const textBoxRef = useRef();
@@ -51,11 +54,23 @@ const Chat = ({ response }) => {
   }, [response]);
 
   // Call API when user prompts
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
     setInputValue("");
+    const token = await getToken();
+
     axios
-      .post(`http://localhost:8080/api/openaiResponse`, inputValue)
+      .post(
+        `http://localhost:8080/api/openaiResponse`,
+        { text: inputValue }, // Your data payload {}
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            mode: "cors",
+          },
+        }
+      )
       .then((res) => {
         setOpenAIResponse(res.data);
       })

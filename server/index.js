@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", ClerkExpressRequireAuth(), openaiRoutes);
+// app.use("/api", openaiRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);
