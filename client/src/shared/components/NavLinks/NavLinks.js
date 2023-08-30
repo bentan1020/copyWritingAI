@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 const NavLinks = () => {
   return (
@@ -14,7 +14,7 @@ const NavLinks = () => {
             marginRight: "calc(0.5vw + 0.5vh)",
           }}
         >
-          <HomeIcon
+          <FacebookIcon
             style={{
               color: "white",
               marginRight: "calc(0.5vw + 0.5vh)",
@@ -25,7 +25,7 @@ const NavLinks = () => {
             className="text-white font-semibold"
             style={{ fontSize: "calc(1vw)" }}
           >
-            Home
+            Facebook Ads
           </div>
         </li>
       </NavLink>
