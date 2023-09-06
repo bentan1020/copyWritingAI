@@ -2,38 +2,42 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { ClerkExpressRequireAuth } = require("@clerk/clerk-sdk-node");
 const { Webhook } = require("svix");
-const bodyParser = require("body-parser");
 
 const cors = require("cors");
 
 const messageRoutes = require("./routes/message-routes");
 const userRoutes = require("./routes/user-routes");
 const HttpError = require("./models/http-error");
+const { createUser } = require("./controller/user-controller");
 
 const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
 
-app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
-  try {
-    const payload = req.body.toString("utf8"); // Convert to Buffer to string
-    const headers = req.headers;
+app.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    try {
+      const payload = req.body.toString("utf8");
+      const headers = req.headers;
 
-    const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET_KEY);
-
-    const msg = wh.verify(payload, {
-      "svix-signature": req.headers["svix-signature"],
-      "svix-timestamp": req.headers["svix-timestamp"],
-      "svix-id": req.headers["svix-id"],
-    });
-
-    res.json({});
-  } catch (err) {
-    const error = new HttpError(err.message, 400);
-    return next(error);
+      const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET_KEY);
+      const verifiedPayload = wh.verify(payload, {
+        "svix-signature": headers["svix-signature"],
+        "svix-timestamp": headers["svix-timestamp"],
+        "svix-id": headers["svix-id"],
+      });
+      
+      const newUser = await createUser(verifiedPayload);
+      res.status(201).json(newUser);
+    } catch (err) {
+      console.error(err);
+      res.status(400).json({ error: err.message });
+    }
   }
-});
+);
 
 app.use(express.json());
 app.use(

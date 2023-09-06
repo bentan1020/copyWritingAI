@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run tunnel\"",
-    "server": "nodemon index.js",
+    "server": "nodemon app.js",
     "tunnel": "ngrok http --domain=fast-collie-allegedly.ngrok-free.app 8080"
   },
   "dependencies": {
