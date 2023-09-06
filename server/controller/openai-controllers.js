@@ -2,6 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const HttpError = require("../models/http-error");
 const facebookAds = require("../models/facebook-ads");
+const User = require("../models/user");
 
 // configuration for openai
 const configuration = new Configuration({
@@ -78,4 +79,20 @@ exports.getChatGPT = async (req, res, next) => {
 
   console.log(response.data.choices[0].message.content);
   res.send(response.data.choices[0].message.content);
+};
+
+// retrieve messages
+exports.retrieveMessage = async (req, res, next) => {
+  const uid = req.params.uid;
+  let user;
+  try {
+    user = await User.findOne({ uid: uid });
+    res.json(user.facebookMessages);
+  } catch (err) {
+    const error = new HttpError(
+      "could not find anything related to this user",
+      500
+    );
+    return next(error);
+  }
 };
