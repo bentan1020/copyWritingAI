@@ -1,0 +1,10 @@
+- webhooks - from clerk authentication to ngrok
+    - ngrok serves as a communicator between localhost and the web, svik is to make sure it's valid and not malicious data being send in
+    - context:
+        - clerk stores user information upon sign in, need a way to get those data
+    - upon new user created, clerk webhook gets trigger
+    - this sends information to ngrok's custom domain
+    - use webhook BEFORE express.json() and urlencoded
+    - see this commit and below for more detail
+    - clerk: https://clerk.com/docs/users/sync-data?utm_source=www.google.com&utm_medium=referral&utm_campaign=none
+    - ngrok: https://ngrok.com/docs/integrations/clerk/webhooks/

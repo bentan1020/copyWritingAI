@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "concurrently \"npm run server\" \"npm run tunnel\"",
+    "server": "nodemon index.js",
+    "tunnel": "ngrok http --domain=fast-collie-allegedly.ngrok-free.app 8080"
   },
   "dependencies": {
     "@clerk/clerk-sdk-node": "^4.12.3",
@@ -10,9 +12,11 @@
     "express-session": "^1.17.3",
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.0",
-    "openai": "^3.2.1"
+    "openai": "^3.2.1",
+    "svix": "^1.11.0"
   },
   "devDependencies": {
+    "concurrently": "^8.2.1",
     "nodemon": "^2.0.22"
   }
 }
