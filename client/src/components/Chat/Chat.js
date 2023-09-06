@@ -11,6 +11,7 @@ const Chat = ({ response }) => {
   const { getToken } = useAuth();
   const { user } = useUser();
   const uid = user.id;
+  const messageContainerRef = useRef(null);
 
   // retrieve messages
   const fetchMessages = async () => {
@@ -115,13 +116,22 @@ const Chat = ({ response }) => {
       });
   };
 
+  // autoscroll to the latest message
+  useEffect(() => {
+    if (messageContainerRef.current) {
+      const container = messageContainerRef.current;
+      container.scrollTop = container.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <div className="flex flex-col h-screen bg-gray-100 p-4">
-      <div className="flex-1 overflow-y-auto mb-4 bg-white p-4 rounded shadow">
+      {/* message list */}
+      <div ref={messageContainerRef} className="flex-1 overflow-y-auto mb-4 bg-white p-4 rounded shadow">
         {messages.map((message, index) => (
           <div className="mb-4" key={index}>
             <div className="text-sm text-gray-600">
-              {message.sender === "user" ? "Username" : "Bot"}
+              {message.sender === "user" ? user.fullName : "Bot"}
             </div>
             <div
               className={`rounded p-2 mt-1 ${
