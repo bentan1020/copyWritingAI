@@ -4,7 +4,7 @@ const { ClerkExpressWithAuth, ClerkExpressRequireAuth } = require("@clerk/clerk-
 
 const cors = require("cors");
 
-const openaiRoutes = require("./routes/openai-routes");
+const openaiRoutes = require("./routes/message-routes");
 const HttpError = require("./models/http-error");
 
 const port = process.env.PORT || 8080;
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api", ClerkExpressRequireAuth(), openaiRoutes);
+app.use("/api/message", ClerkExpressRequireAuth(), openaiRoutes);
 
 app.use((req, res, next) => {
   const error = new HttpError("Could not find this route.", 404);

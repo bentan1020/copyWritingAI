@@ -16,7 +16,7 @@ const Chat = ({ response }) => {
   const fetchMessages = async () => {
     const token = await getToken();
     axios
-      .get(`http://localhost:8080/api/retrieveMessages/${uid}`, {
+      .get(`http://localhost:8080/api/message/retrieveMessages/${uid}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ const Chat = ({ response }) => {
 
     axios
       .post(
-        `http://localhost:8080/api/givePrompt/${uid}`,
+        `http://localhost:8080/api/message/givePrompt/${uid}`,
         {
           currTime: currTime,
           message: inputValue,
