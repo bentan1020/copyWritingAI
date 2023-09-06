@@ -42,7 +42,7 @@ const Chat = ({ response }) => {
     }, 10000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [openAIResponse]);
 
   // input box expands
   const textBoxRef = useRef();
@@ -86,15 +86,19 @@ const Chat = ({ response }) => {
 
   // Call API when user prompts
   const submitHandler = async (e) => {
-    console.log(uid)
+    console.log(uid);
     e.preventDefault();
     setInputValue("");
     const token = await getToken();
+    const currTime = new Date();
 
     axios
       .post(
-        `http://localhost:8080/api/openaiResponse`,
-        { text: inputValue }, // Your data payload {}
+        `http://localhost:8080/api/givePrompt/${uid}`,
+        {
+          currTime: currTime,
+          message: inputValue,
+        },
         {
           headers: {
             "Content-Type": "application/json",
