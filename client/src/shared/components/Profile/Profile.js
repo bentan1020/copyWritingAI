@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import SettingsModal from "./../SettingModal/SettingsModal";
+import { useUser } from "@clerk/clerk-react"
 
 const Profile = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const { user } = useUser();
 
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
@@ -28,7 +30,7 @@ const Profile = () => {
           }}
         >
           <img
-            src="https://youthscape.ams3.cdn.digitaloceanspaces.com/images/16723620780107.remini-enhanced.jpg"
+            src={user.imageUrl}
             alt="Profile Picture"
             className="rounded-md object-cover"
             style={{
@@ -41,7 +43,7 @@ const Profile = () => {
           className="flex-1 flex items-center text-white font-semibold"
           style={{ fontSize: "calc(0.80vw)" }}
         >
-          Andrew Tate
+          {user.fullName}
         </div>
         <div className="flex items-center">
           <ImportExportIcon style={{ color: "white", fontSize: "calc(1vw)" }} />
