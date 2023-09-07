@@ -82,14 +82,14 @@ const InputForm = ({ onSubmit }) => {
         {activeTab !== "general" && (
           <button
             onClick={() => setActiveTab(tabs[tabs.indexOf(activeTab) - 1])}
-            className="flex-1 mx-4 p-4 bg-blue-600 text-white rounded hover:bg-blue-500"
+            className="flex-1 mx-4 p-4 bg-gray-950 text-white rounded hover:bg-gray-800"
           >
             Previous
           </button>
         )}
         <button
           onClick={clearCurrentTab}
-          className="flex-1 mx-4 p-4 bg-blue-600 text-white rounded hover:bg-blue-500"
+          className="flex-1 mx-4 p-4 bg-gray-950 text-white rounded hover:bg-gray-800"
         >
           Clear
         </button>
@@ -99,7 +99,7 @@ const InputForm = ({ onSubmit }) => {
               ? submitData
               : () => setActiveTab(tabs[tabs.indexOf(activeTab) + 1])
           }
-          className="flex-1 mx-4 p-4 bg-blue-600 text-white rounded hover:bg-blue-500"
+          className="flex-1 mx-4 p-4 bg-gray-950 text-white rounded hover:bg-gray-800"
         >
           {activeTab === "product" ? "Submit" : "Next"}
         </button>

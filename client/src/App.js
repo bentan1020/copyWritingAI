@@ -14,27 +14,19 @@ import {
 } from "@clerk/clerk-react";
 
 import CopyLab from "./pages/CopyLab";
+import Public from "./pages/Public";
 
 if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
 }
 const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
 
-function PublicPage() {
-  return (
-    <>
-      <h1>Public page</h1>
-      <a href="/protected">Go to protected page</a>
-    </>
-  );
-}
-
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
   return (
     <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
       <Routes>
-        <Route path="/" element={<PublicPage />} />
+        <Route path="/" element={<Public />} />
         
         <Route
           path="/protected"

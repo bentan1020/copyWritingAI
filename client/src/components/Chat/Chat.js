@@ -82,7 +82,7 @@ const Chat = ({ response }) => {
       response,
       "here are some traits about our target audience, as well as our product: \n"
     );
-    setInputValue((prevInputValue) => prevInputValue + "\n" + feedData);
+    setInputValue((prevInputValue) => (prevInputValue + "\n" + feedData).trim());
   }, [response]);
 
   // Call API when user prompts
@@ -159,7 +159,7 @@ const Chat = ({ response }) => {
             onChange={textOnChangeHandler}
             rows="1"
           />
-          <button className="w-10 h-10 text-xs font-medium bg-blue-500 rounded-md text-white">
+          <button className="w-10 h-10 text-xs font-medium bg-gray-950 rounded-md text-white hover:bg-gray-800">
             <SendIcon />
           </button>
         </div>
