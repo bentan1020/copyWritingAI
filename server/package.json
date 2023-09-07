@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "prestart": "lsof -ti :8080 | xargs kill -9",
     "start": "concurrently \"npm run server\" \"npm run tunnel\"",
     "server": "nodemon app.js",
     "tunnel": "ngrok http --domain=fast-collie-allegedly.ngrok-free.app 8080"
