@@ -1,9 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import demo from "../assets/public-pageview-demo.png";
 import favicon from "../assets/StreamlineSelling Favicon.png";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
 
 const Public = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col bg-gradient-to-b from-gray-950 to-gray-900 text-white min-h-screen">
       {/* header */}
@@ -26,8 +29,13 @@ const Public = () => {
           }}
           className="flex-1 flex flex-row-reverse"
         >
-          <button className="flex items-center font-bold text-lg bg-blue-600 rounded-md p-3 px-6">
-            <a href="/protected">Log In</a>
+          <button
+            onClick={() => {
+              navigate("/protected");
+            }}
+            className="flex items-center font-bold text-lg bg-blue-600 rounded-md p-3 px-6"
+          >
+            Login
           </button>
         </div>
       </div>
@@ -47,7 +55,12 @@ const Public = () => {
             ever performed. You can expect the same result.
           </div>
           <div>
-            <button className="flex items-center font-bold text-lg bg-blue-600 p-4 border-slate-500 rounded-md">
+            <button
+              onClick={() => {
+                navigate("/protected");
+              }}
+              className="flex items-center font-bold text-lg bg-blue-600 p-4 border-slate-500 rounded-md"
+            >
               <div className="ml-4 mr-4 md:mr-16">TRY FOR FREE</div>
               <div className="flex justify-center items-center bg-white p-2 rounded-full">
                 <KeyboardDoubleArrowUpIcon color="primary" />
