@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid } from "@mui/material";
 
 import InputForm from "../components/InputForm/InputForm";
-import SideDrawer from "../shared/components/SideDrawer/SideDrawer"
+import SideDrawer from "..//components/SideDrawer/SideDrawer"
 import Chat from "../components/Chat/Chat"
 
 const CopyLab = () => {
