@@ -7,6 +7,13 @@ Features:
 - [x] Chatbot
 - [x] Store messages
 
+### Tech Stack
+- React
+- Express
+- MongoDB
+- CLerk
+- Tailwind
+
 ### To start this project (frontend)
 
 1. open terminal and run `cd client`
