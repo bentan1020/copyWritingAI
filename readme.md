@@ -1,23 +1,23 @@
 ## Copywriting AI
-<br>
+
 Business owners have problems writing high-converting sales copies/advertisement, this app is designed to fix that
-<br>
+
 Features:
 - [x] Sign in
 - [x] Chatbot
 - [x] Store messages
-<br>
+
 ### To start this project (frontend)
-<br>
+
 1. open terminal and run `cd client`
 2. in .env.sample file, get rid of ".sample", and paste in the appopriate API keys
 3. run `npm install && npm start`
-<br>
+
 ### To start this project (backend)
 1. open terminal and run `cd server`
 2. in nodemon-sample.json file, get rid of "-sample", and paste in the appopriate API keys and credentials
 3. run `npm install && npm start`
-<br>
+
 Notes/Challenges:
 - webhooks - from clerk authentication to ngrok
     - ngrok serves as a communicator between localhost and the web, svik is to make sure it's valid and not malicious data being send in
