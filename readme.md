@@ -2,7 +2,7 @@
 
 Business owners have problems writing high-converting sales copies/advertisement, this app is designed to fix that
 
-Features:
+### Features:
 - [x] Sign in
 - [x] Chatbot
 - [x] Store messages
