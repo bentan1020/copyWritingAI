@@ -18,7 +18,7 @@ Features:
 2. in nodemon-sample.json file, get rid of "-sample", and paste in the appopriate API keys and credentials
 3. run `npm install && npm start`
 
-Notes/Challenges:
+### Notes/Challenges:
 - webhooks - from clerk authentication to ngrok
     - ngrok serves as a communicator between localhost and the web, svik is to make sure it's valid and not malicious data being send in
     - context:
