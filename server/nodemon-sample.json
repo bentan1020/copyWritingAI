@@ -1,0 +1,10 @@
+{
+    "env": 
+    {
+      "DB_PASSWORD":,
+      "DB_USER":,
+      "OPENAI_API_KEY":,
+      "CLERK_WEBHOOK_SECRET_KEY":,
+      "CLERK_API_KEY":,
+    }
+}
