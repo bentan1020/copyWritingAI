@@ -2,8 +2,12 @@
 
 Business owners have problems writing high-converting sales copies/advertisement, this app is designed to fix that
 
-<img width="1421" alt="Screenshot 2024-11-06 at 4 40 32 PM" src="https://github.com/user-attachments/assets/91fdcaec-eb61-4e24-bac7-d23ed3f4ae7c">
-<img width="1413" alt="Screenshot 2024-11-06 at 4 39 56 PM" src="https://github.com/user-attachments/assets/e79e707e-311f-441b-84cd-66e270fe07d3">
+<img width="700" alt="Screenshot 2024-11-06 at 4 39 56 PM" src="https://github.com/user-attachments/assets/e79e707e-311f-441b-84cd-66e270fe07d3">
+<br />
+<br />
+<br />
+<br />
+<img width="700" alt="Screenshot 2024-11-06 at 4 40 32 PM" src="https://github.com/user-attachments/assets/91fdcaec-eb61-4e24-bac7-d23ed3f4ae7c">
 
 ### Features:
 - [x] Sign in
